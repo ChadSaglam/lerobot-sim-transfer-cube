@@ -9,6 +9,9 @@ The point of this repository is not a new method. It is an honest, reproducible 
 same simulator, same evaluation seeds, 95% confidence intervals on every number, two training seeds,
 and the failure modes written down.
 
+Trained checkpoint (80k steps, seed 1000) with model card:
+[`ChadSaglam/act_aloha_sim_transfer_cube`](https://huggingface.co/ChadSaglam/act_aloha_sim_transfer_cube) on Hugging Face.
+
 ![rollouts](results/rollouts_seed1000_80k.gif)
 
 *Left: a successful rollout (the right arm picks the red cube and hands it to the left gripper).
