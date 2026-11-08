@@ -5,9 +5,9 @@ an [ACT](https://arxiv.org/abs/2304.13705) policy trained from scratch on the
 `lerobot/aloha_sim_transfer_cube_human` dataset (50 human demonstrations), on an Apple M4 MacBook Pro
 with no NVIDIA GPU, and evaluated against the official LeRobot checkpoint under identical conditions.
 
-The point of this repository is not a new method. It is an honest, reproducible measurement:
-same simulator, same evaluation seeds, 95% confidence intervals on every number, two training seeds,
-and the failure modes written down.
+There is no new method here. The repository measures how close a policy trained on a laptop gets to the
+official LeRobot checkpoint: same simulator, same evaluation seeds, 95% confidence intervals on every
+number, two training seeds, and the failure modes written down.
 
 Trained checkpoint (80k steps, seed 1000) with model card:
 [`ChadSaglam/act_aloha_sim_transfer_cube`](https://huggingface.co/ChadSaglam/act_aloha_sim_transfer_cube) on Hugging Face.
@@ -23,8 +23,8 @@ Headline numbers (200 episodes each, same seeds):
 
 | Policy | Training steps | Success | 95% CI |
 |---|---|---|---|
-| official `lerobot/act_aloha_sim_transfer_cube_human` | 80k | **81.0%** (162/200) | 75.0-85.8 |
-| own ACT, seed 1000 | 80k | **75.5%** (151/200) | 69.1-80.9 |
+| official `lerobot/act_aloha_sim_transfer_cube_human` | 80k | 81.0% (162/200) | 75.0-85.8 |
+| own ACT, seed 1000 | 80k | 75.5% (151/200) | 69.1-80.9 |
 | own ACT, seed 1000 | 50k | 64.0% (128/200) | 57.1-70.3 |
 | own ACT, seed 1001 | 50k | 62.0% (124/200) | 55.1-68.4 |
 
@@ -41,7 +41,7 @@ Every evaluated checkpoint (50 episodes unless stated; full table in [`results/r
 | 60k | 64.0% (50.1-75.9) | - |
 | 70k | 72.0% (58.3-82.5) | - |
 | 80k | 70.0% (56.2-80.9) | - |
-| 80k, 200 episodes | **75.5%** (69.1-80.9) | - |
+| 80k, 200 episodes | 75.5% (69.1-80.9) | - |
 
 - "official" is `lerobot/act_aloha_sim_transfer_cube_human` (trained by the LeRobot team for 80k steps on an
   RTX 3090), converted to the 0.7.0 processor format and evaluated here with the same seeds as the own policies.
@@ -54,19 +54,18 @@ Every evaluated checkpoint (50 episodes unless stated; full table in [`results/r
 
 ### What the numbers say
 
-1. **At equal training length the laptop run is statistically indistinguishable from the official
-   checkpoint.** 75.5% versus 81.0% over 200 episodes; the intervals overlap (69.1-80.9 versus 75.0-85.8).
-   At 50k steps it was not: 64.0% (57.1-70.3) sits clearly below the baseline. Stopping at 50k would have
-   produced a misleading "20 points worse" headline.
-2. **The loss curve is not a proxy for task success.** Both seeds have practically the same loss at every
-   step (the two curves lie on top of each other), yet at 10k steps seed 1000 succeeds in 66% of episodes
-   and seed 1001 in 32%. Loss fell monotonically from 0.14 (10k) to 0.052 (80k) while success went
-   66 -> 52 -> 42 -> 54 -> 62 -> 64 -> 72 -> 70%. Only rollouts in the environment measure what matters.
-3. **Seed noise is large early and shrinks late.** The two seeds differ by 34 points at 10k and by 2 points at
-   50k (64.0% versus 62.0% over 200 episodes). A single early checkpoint says little about the run.
-4. **50 episodes are not enough to rank neighbouring checkpoints.** The 95% intervals span about 26 points;
-   the 60k/70k/80k values (64/72/70%) are one plateau, not a trend. The 200-episode evaluations are the
-   numbers to quote.
+1. At equal training length the laptop run is statistically indistinguishable from the official checkpoint:
+   75.5% versus 81.0% over 200 episodes, with overlapping intervals (69.1-80.9 and 75.0-85.8). At 50k steps
+   it was not. 64.0% (57.1-70.3) sits clearly below the baseline, and stopping there would have produced a
+   misleading "20 points worse" headline.
+2. The loss curve does not predict task success. Both seeds have practically the same loss at every step
+   (the two curves lie on top of each other), yet at 10k steps seed 1000 succeeds in 66% of episodes and
+   seed 1001 in 32%. Loss fell from 0.14 (10k) to 0.052 (80k) while success went
+   66 -> 52 -> 42 -> 54 -> 62 -> 64 -> 72 -> 70%. Only rollouts in the environment measure it.
+3. Seed noise is large early and small late: the two seeds differ by 34 points at 10k and by 2 points at 50k
+   (64.0% versus 62.0% over 200 episodes).
+4. 50 episodes cannot rank neighbouring checkpoints. The 95% intervals span about 26 points, so the
+   60k/70k/80k values (64/72/70%) are one plateau. Quote the 200-episode numbers.
 
 ## Setup
 
