@@ -1,0 +1,4 @@
+# Training and evaluation (Python 3.12, macOS 15+ for MPS or any CUDA Linux box)
+lerobot[training,aloha]==0.7.0
+# Plots
+matplotlib>=3.8

@@ -1,0 +1,19 @@
+job,model,step,n_episodes,n_success,success_pct,ci95_low,ci95_high,avg_max_reward
+baseline_official_act,official lerobot/act_aloha_sim_transfer_cube_human,80k (reported),50,38,76.0,62.6,85.7,3.44
+baseline_official_act_n200,official lerobot/act_aloha_sim_transfer_cube_human,80k (reported),200,162,81.0,75.0,85.8,3.53
+act_seed1000_010000_n50,"own ACT, seed 1000",10k,50,33,66.0,52.2,77.6,3.22
+act_seed1000_020000_n50,"own ACT, seed 1000",20k,50,26,52.0,38.5,65.2,2.8
+act_seed1000_030000_n50,"own ACT, seed 1000",30k,50,21,42.0,29.4,55.8,2.58
+act_seed1000_040000_n50,"own ACT, seed 1000",40k,50,27,54.0,40.4,67.0,2.9
+act_seed1000_050000_n50,"own ACT, seed 1000",50k,50,31,62.0,48.2,74.1,3.12
+act_seed1000_050000_n200,"own ACT, seed 1000",50k,200,128,64.0,57.1,70.3,3.15
+act_seed1000_060000_n50,"own ACT, seed 1000",60k,50,32,64.0,50.1,75.9,3.14
+act_seed1000_070000_n50,"own ACT, seed 1000",70k,50,36,72.0,58.3,82.5,3.28
+act_seed1000_080000_n50,"own ACT, seed 1000",80k,50,35,70.0,56.2,80.9,3.28
+act_seed1000_080000_n200,"own ACT, seed 1000",80k,200,151,75.5,69.1,80.9,3.38
+act_seed1001_010000_n50,"own ACT, seed 1001",10k,50,16,32.0,20.8,45.8,2.36
+act_seed1001_020000_n50,"own ACT, seed 1001",20k,50,23,46.0,33.0,59.6,2.74
+act_seed1001_030000_n50,"own ACT, seed 1001",30k,50,31,62.0,48.2,74.1,3.0
+act_seed1001_040000_n50,"own ACT, seed 1001",40k,50,31,62.0,48.2,74.1,2.88
+act_seed1001_050000_n50,"own ACT, seed 1001",50k,50,28,56.0,42.3,68.8,2.86
+act_seed1001_050000_n200,"own ACT, seed 1001",50k,200,124,62.0,55.1,68.4,3.1

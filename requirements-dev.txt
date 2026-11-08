@@ -1,0 +1,4 @@
+# Tooling for tests and CI (does not need lerobot or torch)
+matplotlib>=3.8
+pytest>=8
+ruff>=0.6
